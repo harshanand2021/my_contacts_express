@@ -6,6 +6,21 @@ const app = express()
 app.set('view engine','ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded());
+app.use(express.static('assets'));
+
+// middleware implementation
+app.use(function(req, res, next){
+    req.myName = "Harsh";
+    // console.log('middleware 1 called');
+    next();
+});
+
+// another middleware
+app.use(function(req, res, next){
+    console.log("My Name from MW2 is ", req.myName);
+    // console.log('middleware 2 called');
+    next();
+});
 
 var contactList = [
     {
@@ -23,7 +38,7 @@ var contactList = [
 ]
 
 app.get('/', function(req, res){
-    console.log(req);
+    console.log(req.myName);
     return res.render('home', {
         title: "Contacts List",
         contact_list: contactList
