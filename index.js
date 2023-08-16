@@ -22,14 +22,22 @@ var contactList = [
 ]
 
 app.get('/', function(req, res){
+    console.log(req);
     return res.render('home', {
         title: "Contacts List",
         contact_list: contactList
     });
 });
 
-app.post('./create-contact', function(req, res){
-    return res.redirect('./practice');
+app.get('/practice', function(req, res){
+    return res.render('practice', {
+        title: "Let us play with ejs"
+    });
+});
+
+app.post('/create-contact', function(req, res){
+    console.log(req);
+    // return res.redirect('/practice');
 })
 
 app.listen(port, function(err){
