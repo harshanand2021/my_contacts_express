@@ -9,18 +9,18 @@ app.use(express.urlencoded());
 app.use(express.static('assets'));
 
 // middleware implementation
-app.use(function(req, res, next){
-    req.myName = "Harsh";
-    // console.log('middleware 1 called');
-    next();
-});
+// app.use(function(req, res, next){
+//     req.myName = "Harsh";
+//     // console.log('middleware 1 called');
+//     next();
+// });
 
 // another middleware
-app.use(function(req, res, next){
-    console.log("My Name from MW2 is ", req.myName);
-    // console.log('middleware 2 called');
-    next();
-});
+// app.use(function(req, res, next){
+//     console.log("My Name from MW2 is ", req.myName);
+//     // console.log('middleware 2 called');
+//     next();
+// });
 
 var contactList = [
     {
